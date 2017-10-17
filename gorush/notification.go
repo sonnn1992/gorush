@@ -8,6 +8,7 @@ import (
 	"sync"
 
 	"github.com/appleboy/go-fcm"
+	"fmt"
 )
 
 // D provide string array
@@ -164,7 +165,8 @@ func CheckPushConf() error {
 
 		// check certificate file exist
 		if _, err := os.Stat(PushConf.Ios.KeyPath); os.IsNotExist(err) {
-			return errors.New("certificate file does not exist")
+			a := fmt.Sprint("certificate file does not exist: ", err)
+			return errors.New(a)
 		}
 	}
 
